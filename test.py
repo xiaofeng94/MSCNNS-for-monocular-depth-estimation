@@ -9,7 +9,7 @@ from datasets import NYUv2DataSet, NYUv2FusionSet
 
 import scipy.io as sio
 import numpy as np
-from PIL import Image
+# from PIL import Image
 import glob
 
 import time
@@ -20,27 +20,19 @@ def loadImage(test_file, in_size=[240, 320]):
 
     rgb = data['rgb'][0,0]
     depth = data['depth'][0,0]
-    depthx2 = data['depthx2'][0,0]
-    depthx4 = data['depthx4'][0,0]
-    depthx8 = data['depthx8'][0,0]
+
     imageSize = data['imageSize'][0,0][0]
     offset_x = int((imageSize[0] - in_size[0])/2)
     offset_y = int((imageSize[1] - in_size[1])/2)
 
     rgb_new = rgb.transpose((2, 0, 1))
     rgb_new = torch.from_numpy(rgb_new[np.newaxis,:,offset_x:in_size[0]+offset_x, offset_y:in_size[1]+offset_y]).float()
-    depth_new = depth[offset_x:in_size[0]+offset_x, offset_y:in_size[1]+offset_y]
-    depthx2_new = depthx2[int(offset_x/2):120+int(offset_x/2), int(offset_y/2):160+int(offset_y/2)]
-    depthx4_new = depthx4[int(offset_x/4):60+int(offset_x/4), int(offset_y/4):80+int(offset_y/4)]
-    depthx8_new = depthx8[int(offset_x/8):30+int(offset_x/8), int(offset_y/8):40+int(offset_y/8)]
-
-    depth_target = (np.exp(depth_new), np.exp(depthx2_new), np.exp(depthx4_new), np.exp(depthx8_new))
-
-    depth_new = np.exp(depth_new)
     rgb_new = rgb_new.cuda()
-
     inputData = Variable(rgb_new)
     inputData.volatile = True
+
+    depth_new = depth[offset_x:in_size[0]+offset_x, offset_y:in_size[1]+offset_y]
+    depth_target = np.exp(depth_new)
 
     return inputData, depth_target
 
@@ -93,7 +85,7 @@ if opt.data:
         predictedx1 = predictions[0].cpu()
         predictedx1_np = covert2Array(predictedx1)
 
-        metrics.computeMetrics(predictedx1_np, target[0], disp=True, image_name=dataFiles[indx])
+        metrics.computeMetrics(predictedx1_np, target, disp=True, image_name=dataFiles[indx])
 
     metricsVals = metrics.getMetrics()
 
@@ -109,7 +101,7 @@ else:
 
     rgb = data['rgb'][0,0]
 
-    inputData, targets = loadImage(test_file)
+    inputData, target = loadImage(test_file)
 
     # out of the network
     predictions = model(inputData)
@@ -124,13 +116,13 @@ else:
     pred4x = covert2Array(pred4x)
     pred8x = covert2Array(pred8x)
 
-    currRel = metrics.computeRel(predictedx1, targets[0])
-    currRMS = metrics.computeRMS(predictedx1, targets[0])
-    currL10 = metrics.computeLog10(predictedx1, targets[0])
+    currRel = metrics.computeRel(predictedx1, target)
+    currRMS = metrics.computeRMS(predictedx1, target)
+    currL10 = metrics.computeLog10(predictedx1, target)
 
     print('rel: %f, rms: %f, log10: %f'%(currRel, currRMS, currL10))
 
-    sio.savemat('results.mat', {'rgb': rgb, 'depth':targets[0],
+    sio.savemat('results.mat', {'rgb': rgb, 'depth':target,
         'pred1x': predictedx1, 'pred2x': pred2x, 'pred4x': pred4x,
         'pred8x': pred8x, 'bx4': O_4x,'bx8': O_8x, 'bx16': O_16x, 'bx32': O_32x})
 
