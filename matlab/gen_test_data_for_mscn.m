@@ -50,49 +50,52 @@ for indx = 1:imageNum
     isTrain = false;
     if train_count+1 <= trainNum &&  trainIndx(train_count+1) == indx
         isTrain = true;
+        train_count = train_count + 1;
     end
     
-    % resize image and convert depthdata
-    RGBImage = images(:,:,:,indx);
-    DepthMat = depths(:,:,indx);
-    
-    % crop white padding
-    RGBImage = RGBImage(padding_1+1:end-padding_1,padding_2+1:end-padding_2,:);
-    DepthMat = DepthMat(padding_1+1:end-padding_1,padding_2+1:end-padding_2);
-   
-    RGBImage = im2double(RGBImage);
-    Depth = DepthMat;
-    InfPos = find(Depth > farPlane);
-    Depth(InfPos) = farPlane;
-    Depth = single(Depth);
-    zerosPos = find(Depth <= 0);
-    Depth(zerosPos) = (rand(1)+1);
-    
-    % scale to target size
-    RGBImage = imresize(RGBImage, [480, 640]);
-    Depth = imresize(Depth, [480, 640]);
-    
-    RGBImage_rs = imresize(RGBImage, targetSize);
-    Depth_rs = imresize(Depth, targetSize);
-    Depth_rsx2 = single(imresize(Depth_rs, 1/2));
-    Depth_rsx4 = single(imresize(Depth_rs, 1/4));
-    Depth_rsx8 = single(imresize(Depth_rs, 1/8));
+    if isTrain == false
+        % resize image and convert depthdata
+        RGBImage = images(:,:,:,indx);
+        DepthMat = depths(:,:,indx);
 
-    Depth_rs_t = log(Depth_rs); 
-    Depth_rsx2_t = log(Depth_rsx2);
-    Depth_rsx4_t = log(Depth_rsx4);
-    Depth_rsx8_t = log(Depth_rsx8);
+        % crop white padding
+        RGBImage = RGBImage(padding_1+1:end-padding_1,padding_2+1:end-padding_2,:);
+        DepthMat = DepthMat(padding_1+1:end-padding_1,padding_2+1:end-padding_2);
 
-    data.rgb = RGBImage_rs;
-    data.depth = Depth_rs_t;
-    data.depthx2 = Depth_rsx2_t;
-    data.depthx4 = Depth_rsx4_t;
-    data.depthx8 = Depth_rsx8_t;
-    data.realDepth = Depth_rs;
-    data.imageSize = size(Depth_rs);
+        RGBImage = im2double(RGBImage);
+        Depth = DepthMat;
+        InfPos = find(Depth > farPlane);
+        Depth(InfPos) = farPlane;
+        Depth = single(Depth);
+        zerosPos = find(Depth <= 0);
+        Depth(zerosPos) = (rand(1)+1);
 
-    saveFile = [test_root, '/nyu_v2_', num2str(indx), '.mat'];
-    save(saveFile, 'data');
+        % scale to target size
+        RGBImage = imresize(RGBImage, [480, 640]);
+        Depth = imresize(Depth, [480, 640]);
+
+        RGBImage_rs = imresize(RGBImage, targetSize);
+        Depth_rs = imresize(Depth, targetSize);
+        Depth_rsx2 = single(imresize(Depth_rs, 1/2));
+        Depth_rsx4 = single(imresize(Depth_rs, 1/4));
+        Depth_rsx8 = single(imresize(Depth_rs, 1/8));
+
+        Depth_rs_t = log(Depth_rs); 
+        Depth_rsx2_t = log(Depth_rsx2);
+        Depth_rsx4_t = log(Depth_rsx4);
+        Depth_rsx8_t = log(Depth_rsx8);
+
+        data.rgb = RGBImage_rs;
+        data.depth = Depth_rs_t;
+        data.depthx2 = Depth_rsx2_t;
+        data.depthx4 = Depth_rsx4_t;
+        data.depthx8 = Depth_rsx8_t;
+        data.realDepth = Depth_rs;
+        data.imageSize = size(Depth_rs);
+
+        saveFile = [test_root, '/nyu_v2_', num2str(indx), '.mat'];
+        save(saveFile, 'data');
+    end
     
     if mod(indx, 10) == 0
         disp([num2str(indx),' images has been processed!']);
