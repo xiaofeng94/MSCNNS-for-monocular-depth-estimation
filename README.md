@@ -1,7 +1,7 @@
 # This Repo is Under construction!
 MSCN<sub>NS</sub> (Multi-scale Sub-pixel Convolutional Network with a Neighborhood Smoothness constraint) is a CNN-based approach for monocular depth estimation.
 
-For technical details, please see the paper (comming soon).
+For technical details, please see this [paper]() (comming soon).
 
 ## Prerequisites
 * matlab R2017a (or other proper version)
@@ -28,4 +28,11 @@ You may use the provided model (comming soon) and test samples to test this appo
 ```python3 test.py --model <the pytorch model> --data <path to the generated test data>```
 
 ## Results
-// TODO
+
+Note that you may find the reference and more comparisons in this [paper]().
+
+### Quantitative evaluations
+<img src="https://github.com/xiaofeng94/MSCN_NS-for-monocular-depth-estimation/blob/master/results/table_nyu.png" width="75%" height="75%" />
+
+### Qualitative results
+<img src="https://github.com/xiaofeng94/MSCN_NS-for-monocular-depth-estimation/blob/master/results/figure_nyu.png" width="90%" height="90%" />
