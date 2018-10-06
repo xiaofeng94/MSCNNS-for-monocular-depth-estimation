@@ -33,7 +33,7 @@ You may use the provided model (see BaiduYun link below) and test samples to tes
 Note that you may find the references and more comparisons in the aforementioned paper.
 
 ### Quantitative results
-<img src="https://github.com/xiaofeng94/MSCN_NS-for-monocular-depth-estimation/blob/master/results/table_nyu.png" width="75%" height="75%" />
+<img src="https://github.com/xiaofeng94/MSCNNS-for-monocular-depth-estimation/blob/master/results/table_nyu.png" width="65%" height="65%" />
 
 ### Qualitative results
-<img src="https://github.com/xiaofeng94/MSCN_NS-for-monocular-depth-estimation/blob/master/results/figure_nyu.png" width="90%" height="90%" />
+<img src="https://github.com/xiaofeng94/MSCNNS-for-monocular-depth-estimation/blob/master/results/figure_nyu.png" width="80%" height="80%" />
