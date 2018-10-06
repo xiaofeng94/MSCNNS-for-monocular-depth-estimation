@@ -16,7 +16,7 @@ For technical details, please see this [paper]() (comming soon).
 
 You may use the provided model (see BaiduYun link below) and test samples to test this apporach as follows,
 
-```python3 test.py --model <the pytorch model> --image ./test_samples/nyu_v2_175.mat```
+`python3 test.py --model <the pytorch model> --image ./test_samples/nyu_v2_175.mat`
 
 ### Test on the whole NYU Depth v2 dataset.
 
@@ -26,11 +26,11 @@ You may use the provided model (see BaiduYun link below) and test samples to tes
 4. Download the model in BaiduYun disk (Link: https://pan.baidu.com/s/1U0hw58K2M0y5QE4c3hbNng  password: qnv3)
 5. Test the model as follows,
 
-```python3 test.py --model <the pytorch model> --data <path to the generated test data>```
+`python3 test.py --model <the pytorch model> --data <path to the generated test data>`
 
 ## Results
 
-Note that you may find the reference and more comparisons in this [paper]().
+Note that you may find the references and more comparisons in the aforementioned paper.
 
 ### Quantitative results
 <img src="https://github.com/xiaofeng94/MSCN_NS-for-monocular-depth-estimation/blob/master/results/table_nyu.png" width="75%" height="75%" />
