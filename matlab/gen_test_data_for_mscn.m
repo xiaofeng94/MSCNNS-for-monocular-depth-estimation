@@ -1,5 +1,5 @@
-NYUv2_data = '/media/xiaofeng/learning/NYUv2_DATA/nyu_depth_v2_labeled.mat'; % path to nyu_depth_v2_labeled.mat
-split_file = '/media/xiaofeng/learning/NYUv2_DATA/splits.mat'; % path to splits.mat
+NYUv2_data = ''; % path to nyu_depth_v2_labeled.mat
+split_file = ''; % path to splits.mat
 
 test_root = '../Dataset/test';
 
