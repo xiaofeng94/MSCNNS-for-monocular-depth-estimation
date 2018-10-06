@@ -1,4 +1,4 @@
-# Introduction for MSCN_NS
+# Introduction for MSCNNS
 MSCN<sub>NS</sub> (Multi-scale Sub-pixel Convolutional Network with a Neighborhood Smoothness constraint) is a CNN-based approach for monocular depth estimation.
 
 For technical details, please see this [paper]() (comming soon).
@@ -26,7 +26,7 @@ You may use the provided model (see the BaiduYun link below) and test samples to
 4. Download the model in the `BaiduYun disk (Link: https://pan.baidu.com/s/1U0hw58K2M0y5QE4c3hbNng password: qnv3)`
 5. Test the model as follows,
 
-`python3 test.py --model <the pytorch model> --data <path to the generated test data>`
+`python3 test.py --model <the pytorch model> --data <folder for the generated test data>`
 
 ## Results
 
