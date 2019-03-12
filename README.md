@@ -3,24 +3,6 @@ MSCN<sub>NS</sub> (Multi-scale Sub-pixel Convolutional Network with a Neighborho
 
 For technical details, please see this [paper](https://ieeexplore.ieee.org/document/8624409) (comming soon).
 
-if this code base helps you, you are kind to cite our work as,
-
-@ARTICLE{8624409, 
-
-author={S. {Zhao} and L. {Zhang} and Y. {Shen} and S. {Zhao} and H. {Zhang}}, 
-
-journal={IEEE Access}, 
-
-title={Super-Resolution for Monocular Depth Estimation With Multi-Scale Sub-Pixel Convolutions and a Smoothness Constraint}, 
-
-year={2019}, 
-
-volume={7}, 
-
-pages={16323-16335}
-
-}
-
 ## Prerequisites
 * Matlab R2017a (or other proper version)
 * python v3.5.x
@@ -55,3 +37,16 @@ Note that you may find the references and more comparisons in the aforementioned
 
 ### Qualitative results
 <img src="https://github.com/xiaofeng94/MSCNNS-for-monocular-depth-estimation/blob/master/results/figure_nyu.png" width="80%" height="80%" />
+
+### Citation 
+Please consider citing the following paper if the code is helpful in your research work:
+<pre>
+@ARTICLE{8624409, 
+author={Shiyu Zhao and Lin Zhang and Ying Shen and Shengjie Zhao and Huijuan Zhang}, 
+journal={IEEE Access}, 
+title={Super-Resolution for Monocular Depth Estimation With Multi-Scale Sub-Pixel Convolutions and a Smoothness Constraint}, 
+year={2019}, 
+volume={7}, 
+pages={16323-16335}
+}
+</pre>
