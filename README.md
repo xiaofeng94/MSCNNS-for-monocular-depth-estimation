@@ -42,11 +42,11 @@ Note that you may find the references and more comparisons in the aforementioned
 Please consider citing the following paper if the code is helpful in your research work:
 <pre>
 @ARTICLE{8624409, 
-author={Shiyu Zhao and Lin Zhang and Ying Shen and Shengjie Zhao and Huijuan Zhang}, 
-journal={IEEE Access}, 
-title={Super-Resolution for Monocular Depth Estimation With Multi-Scale Sub-Pixel Convolutions and a Smoothness Constraint}, 
-year={2019}, 
-volume={7}, 
-pages={16323-16335}
+  author={Shiyu Zhao and Lin Zhang and Ying Shen and Shengjie Zhao and Huijuan Zhang}, 
+  journal={IEEE Access}, 
+  title={Super-Resolution for Monocular Depth Estimation With Multi-Scale Sub-Pixel Convolutions and a Smoothness Constraint}, 
+  year={2019}, 
+  volume={7}, 
+  pages={16323-16335}
 }
 </pre>
