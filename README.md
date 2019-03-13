@@ -1,7 +1,7 @@
 # Introduction for MSCNNS
 MSCN<sub>NS</sub> (Multi-scale Sub-pixel Convolutional Network with a Neighborhood Smoothness constraint) is a CNN-based approach for monocular depth estimation.
 
-For technical details, please see this [paper](https://ieeexplore.ieee.org/document/8624409) (comming soon).
+For technical details, please see this [paper](https://ieeexplore.ieee.org/document/8624409).
 
 ## Prerequisites
 * Matlab R2017a (or other proper version)
